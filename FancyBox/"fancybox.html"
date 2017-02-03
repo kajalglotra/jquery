@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+ <head>
+  <title>fancybox plugin</title>
+  <style>
+   .image_fancybox{width:300px; height:300px;}
+  </style>
+ </head>
+ <body>
+ <a rel="gallery" class="fancybox" href="image/image1.jpg" caption="picture1"><img src="image/image1.jpg" class="image_fancybox" alt=""/></a>
+  <a rel="gallery" class="fancybox" href="image/image2.jpeg" caption="picture2"><img src="image/image2.jpeg" class="image_fancybox" alt=""/></a>
+  <a rel="gallery" class="fancybox" href="image/image3.jpg" caption="picture3"><img src="image/image3.jpg" class="image_fancybox" alt=""/></a>
+</div>
+ </body>
+ <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+ <script type="text/javascript" src="plugins/jquery.mousewheel-3.0.6.pack.js"></script>
+ <link rel="stylesheet" href="plugins/jquery.fancybox.css" type="text/css" media="screen" />
+ <script type="text/javascript" src="plugins/jquery.fancybox.pack.js"></script>
+ <script type="text/javascript">
+	$(".fancybox").fancybox({
+    helpers : {
+        overlay : {
+            css : {
+                'background' : 'rgba(58, 42, 45, 0.95)'
+            }
+        }
+    }
+});
+    $(".fancybox")
+    .attr('rel', 'gallery')
+    .fancybox({
+        beforeLoad: function() {
+            this.title = $(this.element).attr('caption');
+        }
+});
+
+</script>
+</html>
