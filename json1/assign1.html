@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <title>JSON Objects</title>
+    <script> 
+      var Info = {"First_Name" : "kajal", "Last_Name" : "Glotra", "Date_of_Birth" : "15-07-1996"};
+    </script>
+    <style>
+      #body1{
+        background-color: yellow;
+        color:black;
+      }
+    </style>
+ </head>
+ <body>
+   <div id="body1">
+   </div>
+ </body>
+ <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+ <script>
+    var show = "";
+   function showDetails(person)
+    {
+     
+     show = show+ "First Name = " + Info.First_Name + "<br />";
+     show = show+ "Last Name = " + Info.Last_Name + "<br />";
+     show = show+ "Date of Birth = " + Info.Date_of_Birth + "<br />";
+    }
+    $(document).ready(function () {
+      showDetails(Info); 
+      $('#body1').html(show);
+     });
+ </script>  
+</html>
