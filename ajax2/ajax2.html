@@ -20,10 +20,10 @@
    var html = "<br /><h3><center>Employee Table</center></h3>";
    html+= "<table class='table'class='table-responsive' border=1 width='850' id='tbl'>";
    html+=  "<tr>" +
-                  "<th><a onclick='name_sort()'>Employee Name</a></th>" +
-                  "<th><a onclick='email_sort()'>Email</a></th>" +
+                  "<th><a onclick='explode1(&quot; name &quot;)'>Employee Name</a></th>" +
+                  "<th><a onclick='explode1(&quot; email &quot;)'>Email</a></th>" +
                   "<th>Message</th>" +
-                  "<th><a onclick='date_sort()'>Date</</th>" +
+                  "<th><a onclick='explode1(&quot; dates &quot;)'>Date</</th>" +
                 "</tr>"
       $.ajax({                                      
            url: 'databse.php', data: "", dataType: 'json', success: function(rows)       
@@ -48,55 +48,22 @@
       });
     }
  </script>
- <script id="div4" language="javascript" type="text/javascript">
-    var flag=false;
-   function date_sort(){
-   flag=!flag; 
-   var html = "<br /><h3><center>Employee Table</center></h3>";
-   $.ajax({                                      
-     url: 'dates.php?value='+flag, data: "", dataType: 'json', success: function(rows)       
-      {
-        html+= "<table class='table' class='table-responsive' border=1 width='850' id='tbl'>";
-        html+=  "<tr>" +
-                  "<th><a onclick='name_sort()' >Employee Name</a></th>" +
-                  "<th><a onclick='email_sort()'>Email</a></th>" +
-                  "<th>Message</th>" +
-                  "<th><a onclick='date_sort()'>Date</a></th>" +
-                "</tr>"
-       for (var i in rows)
-         {
-          var row = rows[i];
-          var employee_name = row[0];
-          var email = row[1];
-          var message = row[2];
-          var date = row[3];
-          html+= "<tr>" +
-                    "<td width='25%'>" + employee_name + "</td>" +
-                    "<td width='25%'>" + email + "</td>" +
-                    "<td width='25%'>" + message + "</td>" +
-                    "<td width='25%'>" + date + "</td>" +
-                 "</tr>";                  
-         }
-        html+= "</table>";
-        $("#div1").html(html);
-      }
-    });
-    }
- </script>
+ 
  <script id="div4" language="javascript" type="text/javascript">
     var flag = false;
-   function name_sort(){
+   function explode1(vary){
     flag = !(flag);
+    var dest =vary+'.php';
    var html = "<br /><h3><center>Employee Table</center></h3>";
    $.ajax({                                      
-     url: 'name.php?value='+flag, data: "", dataType: 'json', success: function(rows)       
+     url: dest+'?value='+flag, data: "", dataType: 'json', success: function(rows)       
       {
         html+= "<table class='table' class='table-responsive'  border=1 width='850' id='tbl'>";
         html+=  "<tr>" +
-                  "<th><a onclick='name_sort()'>Employee Name</a></th>" +
-                  "<th><a onclick='email_sort()'>Email</a></th>" +
+                  "<th><a onclick='explode1()'>Employee Name</a></th>" +
+                  "<th><a onclick='explode3()'>Email</a></th>" +
                   "<th>Message</th>" +
-                  "<th><a onclick='date_sort()'>Date</a></th>" +
+                  "<th><a onclick='explode4()'>Date</a></th>" +
                 "</tr>"
        for (var i in rows)
          {
@@ -118,46 +85,10 @@
     });
    }
  </script>
- <script id="div3" language="javascript" type="text/javascript">
-    var flag = false;
-   function email_sort(){
-    flag = !(flag);
-   var html = "<br /><h3><center>Employee Table</center></h3>";
-   $.ajax({                                      
-     url: 'email.php?value='+flag, data: "", dataType: 'json', success: function(rows)       
-      {
-        html+= "<table class='table' class='table-responsive'  border=1 width='850' id='tbl'>";
-        html+=  "<tr>" +
-                  "<th><a onclick='name_sort()'>Employee Name</a></th>" +
-                  "<th><a onclick='email_sort()'>Email</a></th>" +
-                  "<th>Message</th>" +
-                  "<th><a onclick='date_sort()'>Date</a></th>" +
-                "</tr>"
-       for (var i in rows)
-         {
-          var row = rows[i];
-          var employee_name = row[0];
-          var email = row[1];
-          var message = row[2];
-          var date = row[3];
-          html+= "<tr>" +
-                    "<td width='25%'>" + employee_name + "</td>" +
-                    "<td width='25%'>" + email + "</td>" +
-                    "<td width='25%'>" + message + "</td>" +
-                    "<td width='25%'>" + date + "</td>" +
-                 "</tr>";                  
-         }
-        html+= "</table>";
-        $("#div1").html(html);
-      }
-    });
-    }
-  
- </script>
+
  <script>
    $(document).ready(function(){
     explode();
    });
-   
  </script>
 </html>  
