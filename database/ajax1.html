@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+ <head>
+  <script language="javascript" type="text/javascript" src="jquery.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <style>
+   table{
+    border-collapse: collapse;
+   }
+  </style>
+ </head>
+ <body>
+   <div class="container">
+  <div id="div1"></div> 
+  </div>
+  <script id="div2" language="javascript" type="text/javascript">
+   function explode(){
+   var html = "<br /><h2><center>Table</center></h2>";
+   $.ajax({                                      
+     url: 'databse.php', data: "", dataType: 'json', success: function(rows)       
+      {
+        html+= "<table class='table table-condensed'>";
+        html+=  "<tr>" +
+                  "<th>Employee Name</th>" +
+                  "<th>Email</th>" +
+                  "<th>Message</th>" +
+                  "<th>Date</th>" +
+                "</tr>"
+       for (var i in rows)
+         {
+          var row = rows[i];
+          var employee_name = row[0];
+          var email = row[1];
+          var message = row[2];
+          var date = row[3];
+          html+= "<tr>" +
+                    "<td width='25%'>" + employee_name + "</td>" +
+                    "<td width='25%'>" + email + "</td>" +
+                    "<td width='25%'>" + message + "</td>" +
+                    "<td width='25%'>" + date + "</td>" +
+                 "</tr>";                  
+         }
+        html+= "</table>";
+        $("#div1").html(html);
+      }
+    });
+    }
+   setInterval(explode, 1000);
+  </script>
+ 
+ </body>
+</html>  
